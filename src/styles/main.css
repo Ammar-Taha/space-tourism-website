@@ -19,7 +19,7 @@
 
   /* Home Page */
   body.home {
-    background-image: url("/src/assets/home/background-home-mobile.jpg");
+    background-image: url("../assets/home/background-home-mobile.jpg");
 
     #main-content div > h1 {
       min-width: 100%;
@@ -28,7 +28,7 @@
 
   /* Destination Page */
   body.destination {
-    background-image: url("/src/assets/destination/background-destination-mobile.jpg");
+    background-image: url("../assets/destination/background-destination-mobile.jpg");
 
     .grid-container--destination {
       grid-template-areas:
@@ -72,7 +72,7 @@
 
   /* Crew Page */
   body.crew {
-    background-image: url("/src/assets/crew/background-crew-mobile.jpg");
+    background-image: url("../assets/crew/background-crew-mobile.jpg");
 
     .grid-container--crew {
       --flow-space: 2rem;
@@ -129,7 +129,7 @@
 
   /* Technology Page */
   body.technology {
-    background-image: url("/src/assets/technology/background-technology-mobile.jpg");
+    background-image: url("../assets/technology/background-technology-mobile.jpg");
 
     .grid-container--technology {
       grid-template-areas:
@@ -178,12 +178,12 @@
   /* Tablet - 35rem (560px) and up */
   @media only screen and (width >= 35rem) {
     body.home {
-      background-image: url("/src/assets/home/background-home-tablet.jpg");
+      background-image: url("../assets/home/background-home-tablet.jpg");
       background-position: center center;
     }
 
     body.destination {
-      background-image: url("/src/assets/destination/background-destination-tablet.jpg");
+      background-image: url("../assets/destination/background-destination-tablet.jpg");
 
       .grid-container--destination {
         --gap: 2rem;
@@ -214,7 +214,7 @@
     }
 
     body.crew {
-      background-image: url("/src/assets/crew/background-crew-tablet.jpg");
+      background-image: url("../assets/crew/background-crew-tablet.jpg");
 
       .grid-container--crew {
         grid-template-areas:
@@ -239,7 +239,7 @@
     }
 
     body.technology {
-      background-image: url("/src/assets/technology/background-technology-tablet.jpg");
+      background-image: url("../assets/technology/background-technology-tablet.jpg");
 
       .numbered-title {
         justify-self: start;
@@ -257,11 +257,11 @@
   /* Desktop - 45rem (720px) and up */
   @media only screen and (width >= 45rem) {
     body.home {
-      background-image: url("/src/assets/home/background-home-desktop.jpg");
+      background-image: url("../assets/home/background-home-desktop.jpg");
     }
 
     body.destination {
-      background-image: url("/src/assets/destination/background-destination-desktop.jpg");
+      background-image: url("../assets/destination/background-destination-desktop.jpg");
 
       .grid-container--destination {
         grid-template-areas:
@@ -286,7 +286,7 @@
     }
 
     body.crew {
-      background-image: url("/src/assets/crew/background-crew-desktop.jpg");
+      background-image: url("../assets/crew/background-crew-desktop.jpg");
 
       .grid-container--crew {
         grid-template-areas:
@@ -323,7 +323,7 @@
     }
 
     body.technology {
-      background-image: url("/src/assets/technology/background-technology-desktop.jpg");
+      background-image: url("../assets/technology/background-technology-desktop.jpg");
 
       .grid-container--technology {
         margin-inline: auto;

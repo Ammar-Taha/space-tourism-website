@@ -4,18 +4,31 @@
  */
 import data from "../data.json";
 
+const assetManifest = import.meta.glob("../assets/**/*", {
+  eager: true,
+  import: "default",
+});
+
 /**
- * Resolve asset URL with Vite base path
+ * Resolve asset URL using Vite's asset manifest
  * @param {string} path - Asset path from data.json
  * @returns {string} - Resolved URL
  */
 function resolveAssetUrl(path) {
-  // Get base URL from Vite (handles base path configuration)
-  const base = import.meta.env.BASE_URL;
-  // Remove leading slash from path if it exists, and ensure base doesn't have trailing slash
-  const cleanPath = path.startsWith("/") ? path.slice(1) : path;
-  const cleanBase = base.endsWith("/") ? base.slice(0, -1) : base;
-  return `${cleanBase}/${cleanPath}`;
+  const normalized = path
+    .replace(/^\/+/, "")
+    .replace(/^src\//, "")
+    .replace(/^assets\//, "");
+
+  const key = `../assets/${normalized}`;
+  const resolved = assetManifest[key];
+
+  if (!resolved) {
+    console.warn(`Asset not found for path: ${path}`);
+    return path;
+  }
+
+  return resolved;
 }
 
 /**
