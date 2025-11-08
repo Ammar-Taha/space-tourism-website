@@ -1,0 +1,207 @@
+/* ============ HEADER ============ */
+
+.primary-header {
+  user-select: none;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo {
+    margin: 1.5rem clamp(1.5rem, 5vw, 3.5rem);
+  }
+}
+
+/* ============ NAVIGATION ============ */
+
+.primary-navigation {
+  --gap: clamp(1.5rem, 5vw, 3.5rem);
+  --underline-gap: 2rem;
+  background: hsl(var(--color-white) / 0.05);
+  backdrop-filter: blur(1rem);
+  padding-inline: 1.5rem;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: var(--nav-line-width, 0);
+    height: 1px;
+    background: hsl(var(--color-white) / 0.25);
+    top: 50%;
+    right: 97%;
+  }
+
+  a > span {
+    font-weight: 700;
+    margin-right: 0.5em;
+  }
+}
+
+.mobile-nav-toggle {
+  display: none;
+}
+
+@media only screen and (width < 71.5rem) {
+  .primary-navigation::before {
+    display: none;
+  }
+}
+
+@media only screen and (width < 35rem) {
+  .primary-navigation {
+    --underline-gap: 0.75rem;
+    flex-direction: column;
+    position: fixed;
+    z-index: 1000;
+    inset: 0 0 0 30%;
+    padding: min(20rem, 15vh) 2rem;
+    transform: translateX(100%);
+    transition: transform 300ms ease-in-out;
+  }
+
+  .primary-navigation[data-visible="true"] {
+    transform: translateX(0);
+  }
+
+  /* Removing the underline indicators */
+  .primary-navigation.underline-indicators > * {
+    border-bottom: none;
+  }
+
+  .mobile-nav-toggle {
+    display: block;
+    position: absolute;
+    z-index: 2000;
+    right: 1rem;
+    top: 2rem;
+    background: transparent;
+    background-image: url("/src/assets/shared/icon-hamburger.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 1.5rem;
+    aspect-ratio: 1;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .mobile-nav-toggle[data-open="true"] {
+    background-image: url("/src/assets/shared/icon-close.svg");
+  }
+}
+
+@media only screen and (width >= 35rem) {
+  .primary-navigation {
+    padding-inline: clamp(3rem, 5vw, 7rem);
+  }
+}
+
+@media only screen and (width >= 35rem) and (width < 45rem) {
+  .primary-navigation a > span {
+    display: none;
+  }
+}
+
+@media only screen and (width >= 45rem) {
+  .primary-navigation {
+    margin-block: 2rem;
+  }
+}
+
+/* ============ INDICATORS ============ */
+
+.underline-indicators > * {
+  padding: var(--underline-gap, 1rem) 0;
+  border: none;
+  border-bottom: 0.2rem solid hsl(var(--color-white) / 0);
+
+  &:hover,
+  &:focus {
+    border-color: hsl(var(--color-white) / 0.5);
+  }
+
+  &.active,
+  &[aria-selected="true"],
+  & > [aria-selected="true"] {
+    color: hsl(var(--color-white) / 1);
+    border-color: hsl(var(--color-white) / 1);
+  }
+}
+
+.tab-list {
+  --gap: 2rem;
+}
+
+.dot-indicators > * {
+  border: none;
+  border-radius: 50%;
+  padding: 0.35em;
+  background-color: hsl(var(--color-white) / 0.25);
+
+  &:hover,
+  &:focus {
+    background-color: hsl(var(--color-white) / 0.5);
+  }
+
+  &[aria-selected="true"] {
+    background-color: hsl(var(--color-white) / 1);
+  }
+}
+
+.numbered-indicators {
+  --gap: 1.5rem;
+  flex-direction: column;
+
+  button {
+    width: 5rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 1px solid hsl(var(--color-white) / 0.25);
+    background-color: transparent;
+    color: hsl(var(--color-white));
+    font-size: var(--font-size-500);
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover,
+    &:focus {
+      border-color: hsl(var(--color-white) / 1);
+    }
+
+    &[aria-selected="true"] {
+      background-color: hsl(var(--color-white));
+      color: hsl(var(--color-dark));
+    }
+  }
+}
+
+/* ============ BUTTONS ============ */
+
+.large-button {
+  display: inline-grid;
+  place-content: center;
+  font-size: 2rem;
+  padding: 0 2em;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: relative;
+  z-index: 1;
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: hsl(var(--color-white) / 0.15);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    transform: 0;
+    transition: opacity 500ms linear, transform 750ms ease-in-out;
+  }
+
+  &:hover::before,
+  &:focus::before {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+}
